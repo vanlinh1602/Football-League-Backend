@@ -15,7 +15,7 @@ export class UsersService extends Service<User> {
     super(db, 'users');
   }
 
-  getUser = (uid: string): Promise<WithId<User> | null> => this.collection.findOne({ _id: uid });
+  getUser = (email: string): Promise<WithId<User> | null> => this.collection.findOne({ email });
 
   updateUser = async (uid: string, information: Partial<User>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
