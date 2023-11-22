@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 
 export const getUser = async (req: Request, res: Response) => {
-  res.send({});
+  const user = Services.users.getUser('');
+  res.send(user);
 };

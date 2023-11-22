@@ -4,8 +4,12 @@ module.exports = {
     es2021: true,
   },
   globals: {
-    Firebase: true,
+    Databases: true,
     CustomObject: true,
+    Services: true,
+    ProductID: true,
+    NodeJS: true,
+    Logger: true,
   },
   extends: [
     'airbnb-base',
