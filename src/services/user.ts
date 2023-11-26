@@ -4,10 +4,11 @@ import Service from 'services';
 export type User = {
   _id: string;
   email: string;
-  displayName?: string;
+  name?: string;
   male?: boolean;
   photoURL?: string;
   phoneNumber?: string;
+  role: string;
 };
 
 export class UsersService extends Service<User> {
@@ -15,7 +16,7 @@ export class UsersService extends Service<User> {
     super(db, 'users');
   }
 
-  getUser = (email: string): Promise<WithId<User> | null> => this.collection.findOne({ email });
+  getUser = (uid: string): Promise<WithId<User> | null> => this.collection.findOne({ _id: uid });
 
   updateUser = async (uid: string, information: Partial<User>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
