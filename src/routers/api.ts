@@ -8,7 +8,7 @@ const router = express.Router();
 router.use('/auth', auth);
 
 // teams
-router.use('/updateTeam', updateTeam);
 router.use('/getTeams', getTeams);
+router.use('/updateTeam', updateTeam);
 
 export default router;
