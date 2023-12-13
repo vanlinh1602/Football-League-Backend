@@ -20,8 +20,8 @@ startServer({
         users: {
           spec: { email: 1 },
         },
-        teams: {
-          spec: { year: 1 },
+        players: {
+          spec: { team: 1 },
         },
       },
     },

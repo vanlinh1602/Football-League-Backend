@@ -1,6 +1,7 @@
 /* eslint-disable vars-on-top, no-var */
 import { MongoClient } from 'mongodb';
-import { TeamsService } from 'services/teams';
+import type { PlayersService } from 'services/players';
+import type { TeamsService } from 'services/teams';
 import type { UsersService } from 'services/user';
 import type { Logger as LoggerType } from 'winston';
 
@@ -14,6 +15,7 @@ declare global {
   var Services: {
     users: UsersService;
     teams: TeamsService;
+    players: PlayersService;
   };
 }
 

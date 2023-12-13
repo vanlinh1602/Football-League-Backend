@@ -4,11 +4,14 @@ import Service from 'services';
 export type Player = {
   _id: string;
   name: string;
-  birthday: number;
-  address: string;
-  phone: string;
-  email: string;
+  avatar: string;
+  role: string;
   team: string;
+  description?: string;
+  birthday?: number;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export class PlayersService extends Service<Player> {
@@ -16,9 +19,11 @@ export class PlayersService extends Service<Player> {
     super(db, 'players');
   }
 
-  getPlayers = (id: string): Promise<WithId<Player> | null> => this.collection.findOne({ _id: id });
+  getPlayer = (id: string): Promise<WithId<Player> | null> => this.collection.findOne({ _id: id });
 
-  updatePlayers = async (id: string, information: Partial<Player>): Promise<boolean> => {
+  getPlayers = (team: string) => this.collection.find({ team }).toArray();
+
+  updatePlayer = async (id: string, information: Partial<Player>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
       { _id: id },
       { $set: information },
