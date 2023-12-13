@@ -16,6 +16,14 @@ startServer({
   databases: {
     Leagues_Management: {
       srv: process.env.DB_SRV ?? '',
+      indexes: {
+        users: {
+          spec: { email: 1 },
+        },
+        teams: {
+          spec: { year: 1 },
+        },
+      },
     },
   },
 });

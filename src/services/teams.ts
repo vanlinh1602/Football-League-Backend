@@ -1,12 +1,11 @@
-import { Db, WithId } from 'mongodb';
+import { Db, ObjectId, WithId } from 'mongodb';
 import Service from 'services';
 
 export type Teams = {
-  _id: string;
   name: string;
   logo: string;
-  coach: string;
-  captain: string;
+  owner: string;
+  year: number;
 };
 
 export class TeamsService extends Service<Teams> {
@@ -14,11 +13,14 @@ export class TeamsService extends Service<Teams> {
     super(db, 'teams');
   }
 
-  getTeams = (id: string): Promise<WithId<Teams> | null> => this.collection.findOne({ _id: id });
+  getTeam = (id: string): Promise<WithId<Teams> | null> =>
+    this.collection.findOne({ _id: new ObjectId(id) });
 
-  updateTeams = async (uid: string, information: Partial<Teams>): Promise<boolean> => {
+  getTeams = (year: number) => this.collection.find({ year }).toArray();
+
+  updateTeam = async (uid: string, information: Partial<Teams>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
-      { _id: uid },
+      { _id: new ObjectId(uid) },
       { $set: information },
       { upsert: true }
     );

@@ -1,3 +1,4 @@
+import { TeamsService } from 'services/teams';
 import { UsersService } from 'services/user';
 
 export default (): {} => {
@@ -5,6 +6,7 @@ export default (): {} => {
 
   global.Services = {
     users: new UsersService(leaguesManagerDB),
+    teams: new TeamsService(leaguesManagerDB),
   };
 
   return {};
