@@ -17,10 +17,9 @@ export class LeaguesService extends Service<Leagues> {
     super(db, 'leagues');
   }
 
-  getLeagues = (id: string): Promise<WithId<Leagues> | null> =>
-    this.collection.findOne({ _id: id });
+  getLeagues = (): Promise<WithId<Leagues>[]> => this.collection.find().toArray();
 
-  updateLeagues = async (id: string, information: Partial<Leagues>): Promise<boolean> => {
+  updateLeague = async (id: string, information: Partial<Leagues>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
       { _id: id },
       { $set: information },
