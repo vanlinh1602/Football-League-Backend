@@ -16,7 +16,8 @@ export class EventsService extends Service<Events> {
     super(db, 'events');
   }
 
-  getEvents = (id: string): Promise<WithId<Events> | null> => this.collection.findOne({ _id: id });
+  getEvents = (match: string): Promise<WithId<Events>[]> =>
+    this.collection.find({ match }).toArray();
 
   updateEvents = async (id: string, information: Partial<Events>): Promise<boolean> => {
     const updated = await this.collection.updateOne(

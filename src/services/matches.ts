@@ -1,8 +1,6 @@
 import { Db, WithId } from 'mongodb';
 import Service from 'services';
 
-import { EventsService } from './events';
-
 export type Match = {
   _id: string;
   teamA: string;
@@ -18,11 +16,8 @@ export type Match = {
 };
 
 export class MatchesService extends Service<Match> {
-  eventService;
-
   constructor(db: Db) {
     super(db, 'matches');
-    this.eventService = new EventsService(db);
   }
 
   getMatches = (league: string): Promise<WithId<Match>[]> =>
