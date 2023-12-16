@@ -8,10 +8,10 @@ startServer({
   cors: {
     origin: [],
   },
-  session: {
-    secret: 'dev',
-    store: process.env.DB_SRV ?? '',
-  },
+  // session: {
+  //   secret: 'dev',
+  //   store: process.env.DB_SRV ?? '',
+  // },
   port: process.env.PORT ?? '',
   databases: {
     Leagues_Management: {
