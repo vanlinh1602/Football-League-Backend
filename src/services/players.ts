@@ -9,9 +9,6 @@ export type Player = {
   team: string;
   description?: string;
   birthday?: number;
-  address?: string;
-  phone?: string;
-  email?: string;
 };
 
 export class PlayersService extends Service<Player> {

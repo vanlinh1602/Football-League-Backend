@@ -6,10 +6,7 @@ export type Leagues = {
   start: number;
   end: number;
   name: string;
-  participants: CustomObject<{
-    numberMember: number;
-    coach: string;
-  }>;
+  participants: string[];
 };
 
 export class LeaguesService extends Service<Leagues> {
