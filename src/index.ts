@@ -23,6 +23,12 @@ startServer({
         players: {
           spec: { team: 1 },
         },
+        matches: {
+          spec: { league: 1 },
+        },
+        events: {
+          spec: { match: 1 },
+        },
       },
     },
   },

@@ -1,4 +1,5 @@
 import { getLeagues, updateLeague } from 'controllers/leagues';
+import { getMatches, updateMatch } from 'controllers/matches';
 import { getPlayers, updatePlayer } from 'controllers/players';
 import { getTeams, updateTeam } from 'controllers/teams';
 import { auth } from 'controllers/users';
@@ -17,8 +18,12 @@ router.use('/updateTeam', updateTeam);
 router.use('/getPlayers', getPlayers);
 router.use('/updatePlayer', updatePlayer);
 
-// league
+// leagues
 router.use('/getLeagues', getLeagues);
 router.use('/updateLeague', updateLeague);
+
+// matches
+router.use('/getMatchs', getMatches);
+router.use('/updateMatch', updateMatch);
 
 export default router;

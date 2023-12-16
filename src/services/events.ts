@@ -4,10 +4,11 @@ import Service from 'services';
 export type Events = {
   _id: string;
   match: string;
-  player: string;
-  card?: string;
-  scored: boolean;
-  time: number;
+  name: string;
+  detail: {
+    team: string;
+    player?: string;
+  };
 };
 
 export class EventsService extends Service<Events> {

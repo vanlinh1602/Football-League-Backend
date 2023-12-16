@@ -1,23 +1,34 @@
 import { Db, WithId } from 'mongodb';
 import Service from 'services';
 
+import { EventsService } from './events';
+
 export type Match = {
   _id: string;
-  paticipants: string[];
+  teamA: string;
+  teamB: string;
   date: number;
   round: string;
-  mathResult: string;
+  video?: string;
+  mathResult?: {
+    teamA?: number;
+    teamB?: number;
+  };
   league: string;
 };
 
 export class MatchesService extends Service<Match> {
+  eventService;
+
   constructor(db: Db) {
     super(db, 'matches');
+    this.eventService = new EventsService(db);
   }
 
-  getMatches = (id: string): Promise<WithId<Match> | null> => this.collection.findOne({ _id: id });
+  getMatches = (league: string): Promise<WithId<Match>[]> =>
+    this.collection.find({ league }).toArray();
 
-  updateMatches = async (id: string, information: Partial<Match>): Promise<boolean> => {
+  updateMatch = async (id: string, information: Partial<Match>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
       { _id: id },
       { $set: information },
