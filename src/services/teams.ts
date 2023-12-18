@@ -5,6 +5,7 @@ export type Teams = {
   _id: string;
   name: string;
   logo: string;
+  background: string;
   owner: string;
   coach: string;
   captain: string;
