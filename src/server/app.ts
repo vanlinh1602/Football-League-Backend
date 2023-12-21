@@ -32,7 +32,7 @@ export default (config: AppConfig) => {
   app.use(helmet());
   app.use(
     cors({
-      origin: process.env.NODE_ENV === 'development' ? [/localhost/] : config.cors?.origin,
+      origin: process.env.NODE_ENV === 'development' ? [/localhost/] : '*',
       credentials: true,
     })
   );
