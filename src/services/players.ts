@@ -22,6 +22,8 @@ export class PlayersService extends Service<Player> {
 
   getPlayers = (team: string) => this.collection.find({ team }).toArray();
 
+  getAllPlayers = () => this.collection.find().toArray();
+
   updatePlayer = async (id: string, information: Partial<Player>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
       { _id: id },
