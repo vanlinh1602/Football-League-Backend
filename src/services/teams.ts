@@ -9,6 +9,9 @@ export type Teams = {
   owner: string;
   coach: string;
   captain: string;
+  description: string;
+  country: string;
+  founding: number;
 };
 
 export class TeamsService extends Service<Teams> {

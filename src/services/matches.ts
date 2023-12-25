@@ -13,6 +13,7 @@ export type Match = {
     teamB?: number;
   };
   league: string;
+  place: string;
 };
 
 export class MatchesService extends Service<Match> {
