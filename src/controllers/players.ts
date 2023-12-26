@@ -1,4 +1,5 @@
 import type { Request, Response } from 'express';
+import { uploadBase64Image } from 'server/firebase';
 
 export const getAllPlayers = async (req: Request, res: Response) => {
   const raw = (await Services.players.getAllPlayers()) || [];
@@ -17,8 +18,10 @@ export const getPlayers = async (req: Request, res: Response) => {
 
 export const updatePlayer = async (req: Request, res: Response) => {
   const { data } = req.body;
-  const { id, ...dataUpdate } = data;
-  const updated = await Services.players.updatePlayer(id, dataUpdate);
+  const { id, avatar, ...dataUpdate } = data;
+  const uploadFile = await uploadBase64Image(avatar, `players/${id}/avatar.png`);
+
+  const updated = await Services.players.updatePlayer(id, { ...dataUpdate, avatar: uploadFile });
 
   if (updated) {
     res.status(200).send('ok');

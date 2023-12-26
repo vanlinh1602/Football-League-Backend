@@ -1,3 +1,5 @@
+import 'server/firebase';
+
 import startServer from 'server';
 
 require('dotenv-flow').config();

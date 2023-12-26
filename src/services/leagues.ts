@@ -3,9 +3,10 @@ import Service from 'services';
 
 export type Leagues = {
   _id: string;
+  name: string;
+  image: string;
   start: number;
   end: number;
-  name: string;
   participants: string[];
 };
 
