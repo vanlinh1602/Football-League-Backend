@@ -1,6 +1,6 @@
 import { getEvents, updateEvent } from 'controllers/events';
 import { getLeagues, updateLeague } from 'controllers/leagues';
-import { getMatches, updateMatch } from 'controllers/matches';
+import { getAllMatches, getMatches, updateMatch } from 'controllers/matches';
 import { getAllPlayers, getPlayers, updatePlayer } from 'controllers/players';
 import { getTeams, updateTeam } from 'controllers/teams';
 import { auth } from 'controllers/users';
@@ -26,6 +26,7 @@ router.use('/updateLeague', updateLeague);
 
 // matches
 router.use('/getMatchs', getMatches);
+router.use('/getAllMatchs', getAllMatches);
 router.use('/updateMatch', updateMatch);
 
 // events

@@ -24,6 +24,8 @@ export class MatchesService extends Service<Match> {
   getMatches = (league: string): Promise<WithId<Match>[]> =>
     this.collection.find({ league }).toArray();
 
+  getAllMatches = (): Promise<WithId<Match>[]> => this.collection.find().toArray();
+
   updateMatch = async (id: string, information: Partial<Match>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
       { _id: id },

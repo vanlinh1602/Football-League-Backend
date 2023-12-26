@@ -7,6 +7,12 @@ export const getMatches = async (req: Request, res: Response) => {
   res.status(200).send(rawMatches.map(({ _id, ...rest }) => ({ id: _id, ...rest })));
 };
 
+export const getAllMatches = async (req: Request, res: Response) => {
+  const rawMatches = (await Services.matches.getAllMatches()) || [];
+
+  res.status(200).send(rawMatches.map(({ _id, ...rest }) => ({ id: _id, ...rest })));
+};
+
 export const updateMatch = async (req: Request, res: Response) => {
   try {
     const { data } = req.body;
