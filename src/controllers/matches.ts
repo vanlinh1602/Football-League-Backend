@@ -8,12 +8,16 @@ export const getMatches = async (req: Request, res: Response) => {
 };
 
 export const updateMatch = async (req: Request, res: Response) => {
-  const { data } = req.body;
-  const { id, ...dataUpdate } = data;
-  const updated = await Services.matches.updateMatch(id, dataUpdate);
-  if (updated) {
-    res.status(200).send('ok');
-  } else {
-    res.status(500).send('Lỗi cập nhật');
+  try {
+    const { data } = req.body;
+    const { id, ...dataUpdate } = data;
+    const updated = await Services.matches.updateMatch(id, dataUpdate);
+    if (updated) {
+      res.status(200).send('ok');
+    } else {
+      res.status(200).send('Không có cập nhật');
+    }
+  } catch (error) {
+    res.status(500).send(error);
   }
 };

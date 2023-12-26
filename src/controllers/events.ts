@@ -8,12 +8,12 @@ export const getEvents = async (req: Request, res: Response) => {
 };
 
 export const updateEvent = async (req: Request, res: Response) => {
-  const { data } = req.body;
-  const { id, ...dataUpdate } = data;
-  const updated = await Services.events.updateEvents(id, dataUpdate);
-  if (updated) {
-    res.status(200).send('ok');
-  } else {
-    res.status(500).send('Lỗi cập nhật');
+  try {
+    const { data } = req.body;
+    const { id, ...dataUpdate } = data;
+    const updated = await Services.events.updateEvents(id, dataUpdate);
+    res.status(200).send(updated);
+  } catch (error) {
+    res.status(500).send(error);
   }
 };

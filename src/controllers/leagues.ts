@@ -9,13 +9,17 @@ export const getLeagues = async (req: Request, res: Response) => {
 };
 
 export const updateLeague = async (req: Request, res: Response) => {
-  const { data } = req.body;
-  const { id, image, ...dataUpdate } = data;
-  const imageUpload = await uploadBase64Image(image, `leagues/${id}/image.png`);
-  const updated = await Services.leagues.updateLeague(id, { ...dataUpdate, image: imageUpload });
-  if (updated) {
-    res.status(200).send('ok');
-  } else {
-    res.status(500).send('Lỗi cập nhật');
+  try {
+    const { data } = req.body;
+    const { id, image, ...dataUpdate } = data;
+    const imageUpload = await uploadBase64Image(image, `leagues/${id}/image.png`);
+    const updated = await Services.leagues.updateLeague(id, { ...dataUpdate, image: imageUpload });
+    if (updated) {
+      res.status(200).send('ok');
+    } else {
+      res.status(200).send('ok');
+    }
+  } catch (error) {
+    res.status(500).send(error);
   }
 };

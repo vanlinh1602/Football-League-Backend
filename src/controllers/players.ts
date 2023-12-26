@@ -17,15 +17,14 @@ export const getPlayers = async (req: Request, res: Response) => {
 };
 
 export const updatePlayer = async (req: Request, res: Response) => {
-  const { data } = req.body;
-  const { id, avatar, ...dataUpdate } = data;
-  const uploadFile = await uploadBase64Image(avatar, `players/${id}/avatar.png`);
+  try {
+    const { data } = req.body;
+    const { id, avatar, ...dataUpdate } = data;
+    const uploadFile = await uploadBase64Image(avatar, `players/${id}/avatar.png`);
 
-  const updated = await Services.players.updatePlayer(id, { ...dataUpdate, avatar: uploadFile });
-
-  if (updated) {
+    await Services.players.updatePlayer(id, { ...dataUpdate, avatar: uploadFile });
     res.status(200).send('ok');
-  } else {
-    res.status(500).send('Lỗi cập nhật');
+  } catch (error) {
+    res.status(500).send(error);
   }
 };
