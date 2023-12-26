@@ -1,5 +1,6 @@
 import { Storage } from '@google-cloud/storage';
 import admin from 'firebase-admin';
+import { random } from 'lodash';
 
 const serviceAccountKey = {
   type: 'service_account',
@@ -56,7 +57,7 @@ export const uploadBase64Image = async (
     stream.on('error', reject);
     stream.on('finish', () => {
       file.makePublic().then(() => {
-        resolve(`https://storage.googleapis.com/${bucket.name}/${file.name}`);
+        resolve(`https://storage.googleapis.com/${bucket.name}/${file.name}?v=${random(0, 100)}`);
       });
     });
     stream.end(buffer);
