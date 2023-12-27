@@ -1,4 +1,4 @@
-import { getEvents, updateEvent } from 'controllers/events';
+import { getAllEvents, getEvents, updateEvent } from 'controllers/events';
 import { getLeagues, updateLeague } from 'controllers/leagues';
 import { getAllMatches, getMatches, updateMatch } from 'controllers/matches';
 import { getAllPlayers, getPlayers, updatePlayer } from 'controllers/players';
@@ -31,6 +31,7 @@ router.use('/updateMatch', updateMatch);
 
 // events
 router.use('/getEvents', getEvents);
+router.use('/getAllEvents', getAllEvents);
 router.use('/updateEvent', updateEvent);
 
 export default router;

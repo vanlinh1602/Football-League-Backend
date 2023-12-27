@@ -20,6 +20,8 @@ export class EventsService extends Service<Events> {
   getEvents = (match: string): Promise<WithId<Events>[]> =>
     this.collection.find({ match }).toArray();
 
+  getAllEvents = (): Promise<WithId<Events>[]> => this.collection.find().toArray();
+
   updateEvents = async (id: string, information: Partial<Events>): Promise<boolean> => {
     const updated = await this.collection.updateOne(
       { _id: id },
