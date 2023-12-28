@@ -31,6 +31,9 @@ startServer({
         events: {
           spec: { match: 1 },
         },
+        comments: {
+          spec: { path: 1 },
+        },
       },
     },
   },

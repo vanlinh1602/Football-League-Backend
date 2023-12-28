@@ -1,3 +1,4 @@
+import { CommentsService } from 'services/comments';
 import { EventsService } from 'services/events';
 import { LeaguesService } from 'services/leagues';
 import { MatchesService } from 'services/matches';
@@ -15,6 +16,7 @@ export default (): {} => {
     leagues: new LeaguesService(leaguesManagerDB),
     matches: new MatchesService(leaguesManagerDB),
     events: new EventsService(leaguesManagerDB),
+    comments: new CommentsService(leaguesManagerDB),
   };
 
   return {};

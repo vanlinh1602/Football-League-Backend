@@ -1,3 +1,4 @@
+import { addComment, getComments } from 'controllers/comments';
 import { getAllEvents, getEvents, updateEvent } from 'controllers/events';
 import { getLeagues, updateLeague } from 'controllers/leagues';
 import { getAllMatches, getMatches, updateMatch } from 'controllers/matches';
@@ -33,5 +34,9 @@ router.use('/updateMatch', updateMatch);
 router.use('/getEvents', getEvents);
 router.use('/getAllEvents', getAllEvents);
 router.use('/updateEvent', updateEvent);
+
+// comments
+router.use('/getComments', getComments);
+router.use('/addComment', addComment);
 
 export default router;
