@@ -4,13 +4,14 @@ import { getLeagues, updateLeague } from 'controllers/leagues';
 import { getAllMatches, getMatches, updateMatch } from 'controllers/matches';
 import { getAllPlayers, getPlayers, updatePlayer } from 'controllers/players';
 import { getTeams, updateTeam } from 'controllers/teams';
-import { auth } from 'controllers/users';
+import { auth, updateUserData } from 'controllers/users';
 import express from 'express';
 
 const router = express.Router();
 
 // user
 router.use('/auth', auth);
+router.use('/updateUserData', updateUserData);
 
 // teams
 router.use('/getTeams', getTeams);

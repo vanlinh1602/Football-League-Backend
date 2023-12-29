@@ -9,6 +9,11 @@ export type User = {
   photoURL?: string;
   phoneNumber?: string;
   role: string;
+  favorite?: {
+    league?: string[];
+    team?: string[];
+    player?: string[];
+  };
 };
 
 export class UsersService extends Service<User> {
